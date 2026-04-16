@@ -1,0 +1,19 @@
+services:
+  web:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    ports: ["8000:8000"]
+    depends_on: [db, redis]
+    environment:
+      PAPERLESS_REDIS: redis://redis:6379
+      PAPERLESS_DBHOST: db
+      PAPERLESS_DBNAME: paperless
+      PAPERLESS_DBUSER: paperless
+      PAPERLESS_DBPASS: secretpassword
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: secretpassword
+  redis:
+    image: redis:7

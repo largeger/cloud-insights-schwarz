@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Tier 2: Logic - Das Node.js Backend
+  backend:
+    build: ./backend
+    container_name: cloud-store-backend-local
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+
+  # Tier 1: Presentation - Das Frontend (Nginx als Webserver)
+  frontend:
+    image: nginx:alpine
+    container_name: cloud-store-frontend-local
+    restart: always
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - backend
