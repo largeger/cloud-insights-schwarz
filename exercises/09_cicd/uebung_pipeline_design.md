@@ -1,4 +1,4 @@
-# Übung 8.1: Pipeline Design
+# Übung 09: Pipeline Design 🏗️
 
 ## Ziel
 Einen automatisierten Prozess von Code zu Produktion entwerfen.

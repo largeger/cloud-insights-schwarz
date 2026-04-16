@@ -1,0 +1,56 @@
+pipeline {
+    /* 
+       'agent any' läuft auf dem Jenkins-Host selbst.
+       Hinweis: Für 'agent { docker ... }' müsste das 'Docker Pipeline' Plugin installiert sein.
+    */
+    agent any
+
+    stages {
+        stage('Preparation') {
+            steps {
+                echo 'Prüfe Umgebung...'
+                // Wir prüfen, ob node vorhanden ist, ansonsten geben wir eine Warnung aus
+                sh 'node -v || echo "Node.js nicht auf dem Host installiert (völlig okay für diese Demo)"'
+                // Wir erstellen eine temporäre Datei für die Demo
+                sh 'echo "console.log(\'Hello from Jenkins Build\');" > app.js'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Simuliere Build-Vorgang...'
+                echo 'Führe npm install aus (simuliert)...'
+                sh 'echo "Stelle Abhängigkeiten bereit..."'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Führe Tests aus...'
+                // Wir führen das kleine Script aus, falls node da ist
+                sh 'node app.js || echo "Test-Simulation erfolgreich (auch ohne Node)"'
+                echo 'Alle Tests erfolgreich bestanden. ✅'
+            }
+        }
+
+        stage('Deploy (Mock)') {
+            steps {
+                echo 'Bereite Deployment vor...'
+                echo "Ziel-Umgebung: Google Cloud Platform"
+                echo "Projekt-ID: ${env.GCP_PROJECT_ID ?: 'cloud-basics-2026'}"
+                sh 'echo "Deployment-Befehle werden generiert..."'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '---------------------------------------------------'
+            echo 'Pipeline erfolgreich abgeschlossen! 🎉'
+            echo '---------------------------------------------------'
+        }
+        failure {
+            echo 'Pipeline fehlgeschlagen. ❌'
+        }
+    }
+}

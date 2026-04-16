@@ -1,4 +1,4 @@
-# Übung 07: Kubernetes Paketmanagement mit Helm
+# Übung 07: Kubernetes Paketmanagement mit Helm 📦
 
 In dieser Übung lernst du, wie man Kubernetes-Anwendungen mit **Helm** paketiert, konfiguriert und bereitstellt. Helm wird oft als der "Package Manager für Kubernetes" bezeichnet.
 

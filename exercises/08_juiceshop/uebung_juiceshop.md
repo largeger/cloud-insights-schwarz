@@ -1,4 +1,4 @@
-# Übung 07: Cloud Security mit OWASP Juice Shop 🍹
+# Übung 08: Cloud Security mit OWASP Juice Shop 🍹
 
 In dieser Übung lernst du die Grundlagen der Web-Sicherheit kennen. Wir nutzen dafür den **OWASP Juice Shop**, eine bewusst unsicher gestaltete Web-Anwendung. Deine Aufgabe ist es, die Anwendung in der Google Cloud zu hosten und erste Sicherheitslücken zu finden.
 
